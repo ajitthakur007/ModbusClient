@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="680.0" prefWidth="826.0" style="-fx-border-width: 3px;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uct.modbus.controller.HomeController">
+   <children>
+      <Label layoutX="48.0" layoutY="12.0" prefHeight="34.0" prefWidth="96.0" text="IP Address">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="ip" layoutX="144.0" layoutY="12.0" prefHeight="34.0" prefWidth="156.0" />
+      <TextField fx:id="port" layoutX="144.0" layoutY="53.0" prefHeight="34.0" prefWidth="156.0" />
+      <TextField fx:id="unitId" layoutX="144.0" layoutY="92.0" prefHeight="34.0" prefWidth="156.0" />
+      <Label layoutX="54.0" layoutY="92.0" prefHeight="34.0" prefWidth="90.0" text="Unit Id :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="54.0" layoutY="53.0" prefHeight="34.0" prefWidth="90.0" text="port">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="connect" layoutX="327.0" layoutY="34.0" mnemonicParsing="false" onAction="#connect" prefHeight="42.0" prefWidth="76.0" text="Connect">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="disconnect" layoutX="415.0" layoutY="34.0" mnemonicParsing="false" onAction="#disconnect" prefHeight="42.0" prefWidth="96.0" text="Disconnect">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Circle fx:id="green" fill="#01f80e" layoutX="365.0" layoutY="98.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="red" fill="#f70219" layoutX="452.0" layoutY="98.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" />
+      <Pane layoutX="1.0" layoutY="118.0" prefHeight="547.0" prefWidth="820.0">
+         <children>
+            <VBox layoutY="74.0" prefHeight="371.0" prefWidth="224.0">
+               <children>
+                  <Accordion prefHeight="354.0" prefWidth="224.0">
+                    <panes>
+                      <TitledPane animated="false" text="Coils">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Button layoutX="39.0" layoutY="14.0" mnemonicParsing="false" onAction="#readCoils" prefHeight="44.0" prefWidth="163.0" text="Read">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="40.0" layoutY="81.0" mnemonicParsing="false" onAction="#writeCoils" prefHeight="44.0" prefWidth="162.0" text="Write">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                 </children></AnchorPane>
+                        </content>
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                      </TitledPane>
+                      <TitledPane animated="false" text="Discrete Input">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Button layoutX="27.0" layoutY="14.0" mnemonicParsing="false" onAction="#readDiscreteInput" prefHeight="44.0" prefWidth="168.0" text="Read">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                 </children></AnchorPane>
+                        </content>
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                      </TitledPane>
+                      <TitledPane animated="false" text="Holding Register">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Button layoutX="23.0" layoutY="7.0" mnemonicParsing="false" onAction="#readHoldingRegister" prefHeight="44.0" prefWidth="181.0" text="Read">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="23.0" layoutY="59.0" mnemonicParsing="false" onAction="#writeHoldingResgister" prefHeight="44.0" prefWidth="176.0" text="Write">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="readAndWriteHoldingRegister" layoutX="26.0" layoutY="110.0" mnemonicParsing="false" onAction="#readAndWriteHoldingRegister" prefHeight="44.0" prefWidth="175.0" text="Read And Write" visible="false">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                 </children></AnchorPane>
+                        </content>
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                      </TitledPane>
+                        <TitledPane animated="false" text="Input Registers">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Button layoutX="27.0" layoutY="28.0" mnemonicParsing="false" onAction="#readInputRegister" prefHeight="44.0" prefWidth="168.0" text="Read">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                 </children></AnchorPane>
+                           </content>
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </TitledPane>
+                    </panes>
+                  </Accordion>
+               </children>
+            </VBox>
+            <Separator layoutX="-1.0" layoutY="5.0" prefHeight="22.0" prefWidth="820.0" />
+            <Separator layoutX="233.0" layoutY="14.0" orientation="VERTICAL" prefHeight="534.0" prefWidth="0.0" />
+            <Pane fx:id="readCoilsPane" layoutX="238.0" layoutY="20.0" prefHeight="534.0" prefWidth="586.0" visible="false">
+               <children>
+                  <Label layoutX="244.0" layoutY="6.0" prefHeight="36.0" prefWidth="76.0" text="Coils">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="106.0" layoutY="42.0" text="Address : ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="readCoilsAddress" layoutX="189.0" layoutY="43.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="readCoilsQuantity" layoutX="189.0" layoutY="80.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="106.0" layoutY="79.0" text="Quantity : ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="381.0" layoutY="54.0" mnemonicParsing="false" onAction="#readCoilsShow" text="Show">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="460.0" layoutY="54.0" mnemonicParsing="false" onAction="#readCoilsRefresh" text="Refresh">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Separator layoutX="-4.0" layoutY="120.0" prefHeight="0.0" prefWidth="597.0" />
+                  <ListView fx:id="readCoilsListView" layoutX="3.0" layoutY="123.0" prefHeight="402.0" prefWidth="580.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="writeCoilsPane" layoutX="238.0" layoutY="14.0" prefHeight="547.0" prefWidth="586.0">
+               <children>
+                  <RadioButton fx:id="writeSingleCoilsRadio" layoutX="89.0" layoutY="40.0" mnemonicParsing="false" onAction="#writeSingleCoilsRadio" text="Single Coils">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="writeMultipleCoilsRadio" layoutX="343.0" layoutY="40.0" mnemonicParsing="false" onAction="#writeMultipleCoilsRadio" text="Multiple Coils">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </RadioButton>
+                  <Label layoutX="255.0" layoutY="-4.0" prefHeight="36.0" prefWidth="76.0" text="Coils">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Pane fx:id="writeSinglCoilsPane" layoutX="10.0" layoutY="93.0" prefHeight="420.0" prefWidth="586.0">
+                     <children>
+                        <Button layoutX="376.0" layoutY="26.0" mnemonicParsing="false" onAction="#writeSingleCoilsWriteButton" text="Write">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="101.0" layoutY="51.0" text="Value : ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="writeSingleCoilsValue" layoutX="184.0" layoutY="52.0" promptText="only true or false">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="writeSingleCoilsAddress" layoutX="184.0" layoutY="15.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="101.0" layoutY="14.0" text="Address : ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="writeSingleCoilsMsg" layoutX="62.0" layoutY="128.0" prefHeight="133.0" prefWidth="388.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="writeMultipleCoilsPane" layoutY="93.0" prefHeight="455.0" prefWidth="580.0" visible="false">
+                     <children>
+                        <Button layoutX="376.0" layoutY="26.0" mnemonicParsing="false" onAction="#writeMultipleCoilsAddValues" text="Add Values">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="wri" layoutX="101.0" layoutY="51.0" text="Size : ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="writeMultipleCoilsSize" layoutX="184.0" layoutY="52.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="writeMultipleCoilsAddress" layoutX="184.0" layoutY="15.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="101.0" layoutY="14.0" text="Address : ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="writeMutipleCoilsMsg" layoutX="26.0" layoutY="139.0" prefHeight="163.0" prefWidth="452.0">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="readDiscretePane" layoutX="238.0" layoutY="27.0" prefHeight="534.0" prefWidth="586.0" visible="false">
+               <children>
+                  <Label layoutX="199.0" layoutY="-4.0" prefHeight="36.0" prefWidth="175.0" text="Discrete Input">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="106.0" layoutY="42.0" text="Address : ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="readDiscreteAddress" layoutX="189.0" layoutY="43.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="readDiscreteQuantity" layoutX="189.0" layoutY="80.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="106.0" layoutY="79.0" text="Quantity :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="381.0" layoutY="54.0" mnemonicParsing="false" onAction="#readDiscreteShow" text="Show">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="460.0" layoutY="54.0" mnemonicParsing="false" onAction="#readDiscreteRefresh" text="Refresh">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Separator layoutX="-4.0" layoutY="120.0" prefHeight="0.0" prefWidth="597.0" />
+                  <ListView fx:id="readDiscreteListView" layoutX="3.0" layoutY="123.0" prefHeight="402.0" prefWidth="580.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="readHoldingPane" layoutX="238.0" layoutY="20.0" prefHeight="534.0" prefWidth="586.0" visible="false">
+               <children>
+                  <Label layoutX="172.0" layoutY="-4.0" prefHeight="36.0" prefWidth="208.0" text="Holding Register">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="106.0" layoutY="42.0" text="Address : ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="readHoldingAddress" layoutX="189.0" layoutY="43.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="readHoldingQuantity" layoutX="189.0" layoutY="80.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="106.0" layoutY="79.0" text="Quantity :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="381.0" layoutY="54.0" mnemonicParsing="false" onAction="#readHoldingShow" text="Show">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="452.0" layoutY="54.0" mnemonicParsing="false" onAction="#readHoldingRefresh" text="Refresh">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Separator layoutX="-4.0" layoutY="120.0" prefHeight="0.0" prefWidth="597.0" />
+                  <ListView fx:id="readHoldingListView" layoutX="3.0" layoutY="123.0" prefHeight="402.0" prefWidth="580.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="readInputRegisterPane" layoutX="238.0" layoutY="20.0" prefHeight="534.0" prefWidth="586.0" visible="false">
+               <children>
+                  <Label layoutX="172.0" layoutY="-4.0" prefHeight="36.0" prefWidth="208.0" text="Input Register">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="106.0" layoutY="42.0" text="Address : ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="readInputRegisterAddress" layoutX="189.0" layoutY="43.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="readInputRegisterQuantity" layoutX="189.0" layoutY="80.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="106.0" layoutY="79.0" text="Quantity :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="381.0" layoutY="54.0" mnemonicParsing="false" onAction="#readInputRegisterShow" text="Show">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="452.0" layoutY="54.0" mnemonicParsing="false" onAction="#readInputRegisterRefresh" text="Refresh">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Separator layoutX="-4.0" layoutY="120.0" prefHeight="0.0" prefWidth="597.0" />
+                  <ListView fx:id="readInputRegisterListView" layoutX="3.0" layoutY="123.0" prefHeight="402.0" prefWidth="580.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="writeHoldingPane" layoutX="239.0" layoutY="21.0" prefHeight="534.0" prefWidth="580.0" visible="false">
+               <children>
+                  <RadioButton fx:id="writeSingleHoldingRadio" layoutX="30.0" layoutY="40.0" mnemonicParsing="false" onAction="#writeSingleHoldingRadio" text="Single Holding Register">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="writeMultipleHoldingRadio" layoutX="303.0" layoutY="40.0" mnemonicParsing="false" onAction="#writeMultipleHoldingRadio" text="Multiple Holding Register">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </RadioButton>
+                  <Label layoutX="199.0" layoutY="-4.0" prefHeight="36.0" prefWidth="208.0" text="Holding Register">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Pane fx:id="writeSinglHoldingPane" layoutX="10.0" layoutY="93.0" prefHeight="420.0" prefWidth="586.0" visible="false">
+                     <children>
+                        <Button layoutX="376.0" layoutY="26.0" mnemonicParsing="false" onAction="#writeSingleHoldingWriteButton" text="Write">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="101.0" layoutY="51.0" text="Value : ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="writeSingleHoldingValue" layoutX="184.0" layoutY="52.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="writeSingleHoldingAddress" layoutX="184.0" layoutY="15.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="101.0" layoutY="14.0" text="Address : ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="writeSingleHoldingMsg" layoutX="62.0" layoutY="128.0" prefHeight="133.0" prefWidth="388.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="writeMultipleHoldingPane" layoutY="93.0" prefHeight="455.0" prefWidth="580.0">
+                     <children>
+                        <Button layoutX="376.0" layoutY="26.0" mnemonicParsing="false" onAction="#writeMultipleHoldingValuesButton" text="Add Values">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="wri1" layoutX="101.0" layoutY="51.0" text="Size : ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="writeMultipleHoldingSize" layoutX="184.0" layoutY="52.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="writeMultipleHoldingAddress" layoutX="184.0" layoutY="15.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="101.0" layoutY="14.0" text="Address : ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="writeMutipleHoldingMsg" layoutX="101.0" layoutY="150.0" prefHeight="133.0" prefWidth="388.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
